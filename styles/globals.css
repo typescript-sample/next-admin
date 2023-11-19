@@ -1,0 +1,100 @@
+
+@import './App.css';
+@import '../assets/fonts/material-icon/css/material-icons.css';
+@import './css/checkbox.css';
+@import './css/radio.css';
+@import './css/grid.css';
+@import './css/alert.css';
+@import './css/loader.css';
+@import './css/main.css';
+@import './css/modal.css';
+@import './css/multi-select.css';
+@import './css/form.css';
+@import './css/article.css';
+@import './css/list-view.css';
+@import './css/table.css';
+@import './css/list-detail.css';
+@import './css/solid-container.css';
+@import './css/button.css';
+@import './css/search.css';
+@import './css/layout.css';
+@import './css/theme.css';
+@import './css/dark.css';
+@import './css/group.css';
+@import './css/navigation.css';
+@import './css/reset.css';
+@import url('http://fonts.cdnfonts.com/css/roboto');
+@import "./css/date-picker.css";
+@import "./css/diff.css";
+@import "./css/profile.css";
+html,
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto';
+  -webkit-overflow-scrolling: touch;
+  margin: 0;
+  padding: 0;
+}
+* {
+  font-family: "Roboto";
+  scrollbar-width: thin;
+  box-sizing: border-box;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
