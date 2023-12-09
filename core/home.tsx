@@ -1,13 +1,15 @@
+"use client"
+
 import { useEffect, useState } from 'react';
 import { buildShownItems, Groups, Item } from '@lib/react-groups';
 import { Privilege, StringMap, usePrivileges, useResource } from '@lib/uione';
-import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 
-export default function HomePage() {
+export default function   HomePage() {
   const [resource, setResource] = useState<StringMap>()
   const [items, setItems] = useState<Item[]>([]);
   const [shownItems, setShownItems] = useState<Item[]>([])
-  const router = useRouter()
+  const searchParams = useSearchParams()
   useEffect(() => {
     setResource(useResource())
     let groups = usePrivileges()
@@ -16,7 +18,7 @@ export default function HomePage() {
 
   useEffect(() => {
     
-    const v = router.query.q as string || '';
+    const v = searchParams?.get('query') as string || '';
     setShownItems(buildShownItems(v, items))
   }, [items])
 

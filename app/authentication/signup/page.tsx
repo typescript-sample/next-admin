@@ -1,10 +1,12 @@
+"use client"
+
 import { useEffect, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { OnClick, useMessage, useUpdate } from '@lib/react-hook-core';
 import { isEmail, isValidUsername, Status, strongPassword, validate, validateAndSignup } from '@lib/signup-client';
 import { handleError, initForm, message, registerEvents, storage, useResource } from '@lib/uione';
 import logo from '@assets/images/logo.png';
-import { getSignupService } from '../../service/authentication/service';
+import { getSignupService } from '../../../service/authentication/service';
 import Link from 'next/link';
 
 const status: Status = {

@@ -1,3 +1,5 @@
+"use client"
+
 import { Item } from '@lib/onecore';
 import * as React from 'react';
 import { createModel, DispatchWithCallback, EditComponentParam, useEdit } from '@lib/react-hook-core';

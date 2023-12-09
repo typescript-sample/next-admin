@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 import {useEffect, useState} from 'react';
 import {Attributes, buildId, createEditStatus, EditStatusConfig, getModelName as getModelName2, hideLoading, initForm, LoadingService, Locale, message, messageByHttpStatus, ResourceService, showLoading, UIService} from './core';
 import {build, createModel as createModel2, EditParameter, GenericService, handleStatus, handleVersion, initPropertyNullInModel, ResultInfo} from './edit';
@@ -8,6 +8,7 @@ import {clone, makeDiff} from './reflect';
 import {localeOf} from './state';
 import {useUpdate} from './update';
 import {  confirm } from 'ui-alert';
+import { ParsedUrlQuery } from 'querystring';
 export interface BaseEditComponentParam<T, ID> {
   status?: EditStatusConfig;
   backOnSuccess?: boolean;
@@ -72,6 +73,7 @@ export const useEdit = <T, ID, S>(
   p?: EditComponentParam<T, ID, S>
   ) => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const baseProps = useCoreEdit(refForm, initialState, service, p2, p);
   useEffect(() => {
     if (refForm) {
@@ -95,7 +97,7 @@ export const useEdit = <T, ID, S>(
     }else if(p){
       keys=p.keys
     }
-    const id = buildId<ID>(router.query , keys);
+    const id = buildId<ID>(searchParams?.get('query') as any, keys);
     if (p && p.initialize) {
       p.initialize(id, baseProps.load, baseProps.setState, p.callback);
     } else {
@@ -103,7 +105,7 @@ export const useEdit = <T, ID, S>(
     }
     
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.isReady]);
+  }, []);
   return {...baseProps};
 };
 export const useEditProps = <T, ID, S, P>(
@@ -115,6 +117,7 @@ export const useEditProps = <T, ID, S, P>(
   p?: EditComponentParam<T, ID, S>
   ) => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const baseProps = useCoreEdit<T, ID, S, P>(refForm, initialState, service, p2, p, props);
   useEffect(() => {
     if (refForm) {
@@ -136,7 +139,7 @@ export const useEditProps = <T, ID, S, P>(
         p.version = version;
       }
     }
-    const id = buildId<ID>(router.query, keys);
+    const id = buildId<ID>(searchParams?.get('query') as any, keys);
     if (p && p.initialize) {
       p.initialize(id, baseProps.load, baseProps.setState, p.callback);
     } else {

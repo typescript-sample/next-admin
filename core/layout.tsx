@@ -7,7 +7,7 @@ import { collapseAll, expandAll, Nav, sub } from '@lib/reactx-nav';
 import { hasClass, options, parentHasClass, Privilege, storage, StringMap, UserAccount } from '@lib/uione';
 import logo from '@assets/images/logo.png';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 interface InternalState {
   isToggleSearch?: boolean;
@@ -78,6 +78,7 @@ const initialState: InternalState = {
 export const LayoutPage = ({children}:{children:React.ReactNode}) => {
   const resource = storage.getResource();
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [state, setState] = useMergeState<InternalState>(initialState);
   const [topClass, setTopClass] = useState('');
   const [user, setUser] = useState<UserAccount | null | undefined>();
@@ -199,9 +200,9 @@ export const LayoutPage = ({children}:{children:React.ReactNode}) => {
     setUser(storage.user());
   }, [storage.user()]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
-    setState({ keyword: router.query.q as string });
+    setState({ keyword: searchParams?.get('query') as string });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.query]);
+  }, [searchParams?.get('query')]);
   useEffect(() => {
     const { isToggleMenu, isToggleSearch } = state;
     const topClassList = ['sidebar-parent'];

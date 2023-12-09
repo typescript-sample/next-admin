@@ -1,14 +1,16 @@
+"use client"
+
 import { AuthResult, dayDiff, getMessage, handleCookie, initFromCookie, Status, store, User, validate } from '@lib/authen-client';
 import { CookieService } from 'cookie-core';
 import { Base64 } from 'js-base64';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { initForm, OnClick, useMessage, useUpdate } from '@lib/react-hook-core';
 import { alertInfo } from 'ui-alert';
 import { getResource, handleError, loading, message, registerEvents, setPrivileges, setUser, storage, useResource } from '@lib/uione';
 import logo from '@assets/images/logo.png';
-import { getAuthen } from '../../service/authentication/service';
+import { getAuthen } from '../../../service/authentication/service';
 
 export const map = {
   '3': 'fail_authentication',

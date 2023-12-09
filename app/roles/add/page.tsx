@@ -1,8 +1,10 @@
+'use client'
+
 import * as React from 'react';
 import { createModel, DispatchWithCallback, EditComponentParam, useEdit } from '@lib/react-hook-core';
 import { handleError, inputEdit, Status } from '@lib/uione';
 import { getRoleService, Privilege, Role } from '@service/index';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 interface InternalState {
   role: Role;
@@ -120,7 +122,7 @@ const param: EditComponentParam<Role, string, InternalState> = {
   createModel: createRole,
   initialize
 };
-export function RoleForm() {
+function RoleForm() {
   const router = useRouter();
   const refForm = React.useRef();
   // const history = useHistory();
@@ -317,3 +319,5 @@ export function RoleForm() {
     </div>
   );
 }
+
+export default RoleForm

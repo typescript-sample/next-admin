@@ -1,3 +1,4 @@
+"use client"
 import { Item } from '@lib/onecore';
 import React, { useMemo } from 'react';
 import { checked, OnClick, Search, SearchComponentState, useSearch, value } from '@lib/react-hook-core';
@@ -7,7 +8,7 @@ import femaleIcon from '@assets/images/female.png';
 import maleIcon from '@assets/images/male.png';
 import { getUserService, User, UserFilter } from '@service/index';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter, usePathname } from 'next/navigation';
 import Pagination from '@lib/reactx-pagination';
 import style from '@lib/user.module.css'
 interface UserSearch extends SearchComponentState<User, UserFilter> {
@@ -28,18 +29,18 @@ const initialState: UserSearch = {
 };
 const UsersForm = () => {
   const router = useRouter()
+  const pathname = usePathname()
   const path = useMemo(() => {
-    return router.pathname
+    return pathname
   }, [])
-  console.log(router.pathname)
   const refForm = React.useRef();
   const { state, resource, component, updateState, search, sort, toggleFilter, clearQ, changeView, pageChanged, pageSizeChanged } = useSearch<User, UserFilter, UserSearch>(refForm, initialState, getUserService(), inputSearch());
   component.viewable = true;
   component.editable = true;
   const edit = (e: OnClick, id: string) => {
     e.preventDefault();
-
-    router.push( path+`/edit/[cc]` ,path+`/edit/${id}`);
+    router.push(pathname + `/edit/${id}`);
+    // router.push( path+`/edit/[cc]`, path+`/edit/${id}`);
   };
   console.log("component",component);
   

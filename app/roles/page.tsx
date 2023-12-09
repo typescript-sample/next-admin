@@ -1,10 +1,11 @@
+"use client"
 import { Item } from '@lib/onecore';
-import * as React from 'react';
+import React, { useMemo } from 'react';
 import { checked, OnClick,  PageSizeSelect, SearchComponentState, useSearch, value } from '@lib/react-hook-core';
 // import { Pagination } from '@lib/reactx-pagination';
 import { inputSearch } from '@lib/uione';
 import { getRoleService, Role, RoleFilter } from '@service/index';
-import { useRouter } from 'next/router';
+import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Pagination from '@lib/reactx-pagination';
 
@@ -24,13 +25,17 @@ const roleSearch: RoleSearch = {
   filter: roleFilter
 };
  const RolesForm = () => {
-  const router= useRouter()
+  const router = useRouter()
+  const pathname = usePathname()
   const refForm = React.useRef();
+  const path = useMemo(() => {
+    return pathname
+  }, [])
   const { state, resource, component, updateState, search, sort, toggleFilter, clearQ, changeView, pageChanged, pageSizeChanged } = useSearch<Role, RoleFilter, RoleSearch>(refForm, roleSearch, getRoleService(), inputSearch());
 
   const edit = (e: OnClick, id: string) => {
     e.preventDefault();
-    router.push(router.pathname+ `/edit/${id}`);
+    router.push(pathname + `/edit/${id}`);
   };
   const filter = value(state.filter);
   return (
@@ -40,7 +45,7 @@ const roleSearch: RoleSearch = {
         <div className='btn-group'>
           {component.view !== 'table' && <button type='button' id='btnTable' name='btnTable' className='btn-table' data-view='table' onClick={changeView} />}
           {component.view === 'table' && <button type='button' id='btnListView' name='btnListView' className='btn-list-view' data-view='listview' onClick={changeView} />}
-          {component.addable && <Link id='btnNew' className='btn-new' href='add'/>}
+          {component.addable && <Link id='btnNew' className='btn-new' href={path+'/add'}/>}
         </div>
       </header>
       <div>
