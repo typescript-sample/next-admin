@@ -179,8 +179,7 @@
 /* impact on responsive design */
 .view-container {
   /* padding: 10px 5%; */
-  /* padding: 0; */
-  height: 100vh;
+  padding: 0;
 }
 
 .page-container {

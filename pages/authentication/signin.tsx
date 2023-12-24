@@ -1,4 +1,4 @@
-import { AuthResult, dayDiff, getMessage, handleCookie, initFromCookie, Status, store, User, validate } from '@lib/authen-client';
+import { AuthResult, dayDiff, getMessage, handleCookie, initFromCookie, Status, store, User, validate } from 'authen-client';
 import { CookieService } from 'cookie-core';
 import { Base64 } from 'js-base64';
 import Link from 'next/link';

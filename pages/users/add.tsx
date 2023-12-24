@@ -1,4 +1,4 @@
-import { Item } from '@lib/onecore';
+import { Item } from 'onecore';
 import * as React from 'react';
 import { createModel, DispatchWithCallback, EditComponentParam, useEdit } from '@lib/react-hook-core';
 import { formatPhone } from 'ui-plus';

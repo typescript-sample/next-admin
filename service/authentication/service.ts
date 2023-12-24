@@ -1,8 +1,8 @@
-import { AuthenClient, AuthenService, OAuth2Client, OAuth2Service, User } from '@lib/authen-client';
+import { AuthenClient, AuthenService, OAuth2Client, OAuth2Service, User } from 'authen-client';
 import axios from 'axios';
 import { HttpRequest } from 'axios-core';
-import { PasswordClient, PasswordService } from '@lib/password-client';
-import { Signup, SignupClient, SignupService} from '@lib/signup-client';
+import { PasswordClient, PasswordService } from 'password-client';
+import { Signup, SignupClient, SignupService} from 'signup-client';
 import { storage } from '@lib/uione';
 // axios.defaults.withCredentials = true;
 

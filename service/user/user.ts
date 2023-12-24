@@ -1,4 +1,4 @@
-import { Attributes, Filter, Service, Tracking } from '@lib/onecore';
+import { Attributes, Filter, Service, Tracking } from 'onecore';
 
 export interface UserFilter extends Filter {
   userId: string;

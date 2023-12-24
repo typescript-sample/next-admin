@@ -128,6 +128,7 @@ label.error-align-right > span.span-error {
 
 label.flying > span.span-error {
   margin-top: 32px;
+  top: 33px;
 }
 
 label.focused > span.span-error,
@@ -463,6 +464,7 @@ section > .row.radio-group {
 section.row {
   margin-left: 0;
   margin-right: 0;
+  height: 100%;
 }
 
 section > p > label {

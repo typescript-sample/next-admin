@@ -256,6 +256,13 @@ textarea {
   resize: vertical;
 }
 
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+}
+
 fieldset {
   min-width: 0;
   padding: 0;

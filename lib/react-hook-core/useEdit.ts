@@ -92,8 +92,8 @@ export const useEdit = <T, ID, S>(
         p.keys = keys;
         p.version = version;
       }
-    }else if(p){
-      keys=p.keys
+    } else if (p) {
+      keys = p.keys
     }
     const id = buildId<ID>(router.query , keys);
     if (p && p.initialize) {
@@ -211,11 +211,11 @@ export const useCoreEdit = <T, ID, S, P>(
   };
 
   const _handleNotFound = (form?: any): void => {
-    const msg = message(p1.resource.value, 'error_not_found', 'error');
+    const msg = message(p1.resource.value, 'error_404', 'error');
     if (form) {
       setReadOnly(form);
     }
-    p1.showError(msg.message, msg.title);
+    p1.showError(msg.message, msg.title, undefined, () => window.history.back);
   };
   const handleNotFound = (p && p.handleNotFound ? p.handleNotFound : _handleNotFound);
 

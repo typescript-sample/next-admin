@@ -5,6 +5,10 @@ input[type=checkbox]:not(.modal-trigger):not(.toggle):not(#alert-check):not([id*
   height: 16px;
   border-radius: 2px;
   margin-right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 label.checkbox-container > input[type=checkbox]:not(.modal-trigger):not(.toggle):not(#alert-check):not([id*=lightbox-]),

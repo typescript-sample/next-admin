@@ -1,4 +1,4 @@
-import { Item } from '@lib/onecore';
+import { Item } from 'onecore';
 import React, { useMemo } from 'react';
 import { checked, OnClick, Search, SearchComponentState, useSearch, value } from '@lib/react-hook-core';
 // import { Pagination } from '@lib/reactx-pagination';

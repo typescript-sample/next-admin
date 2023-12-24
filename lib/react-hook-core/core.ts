@@ -51,9 +51,9 @@ export function createEditStatus(status?: EditStatusConfig): EditStatusConfig {
     duplicate_key: 0,
     not_found: 0,
     success: 1,
-    version_error: 2,
-    error: 4,
-    data_corrupt: 8
+    version_error: -1,
+    error: 2,
+    data_corrupt: 4
   };
   return s;
 }
@@ -311,6 +311,22 @@ export function buildId<ID>(p: Readonly<ParsedUrlQuery>, keys?: string[]): ID | 
   }
   return id;
 }
+export const datetimeToString = (inputDate: Date) => {
+  const date = new Date(inputDate);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
+  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+};
+export const dateToString = (inputDate: Date) => {
+  const year = inputDate.getFullYear();
+  const month = String(inputDate.getMonth() + 1).padStart(2, '0');
+  const day = String(inputDate.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
 export function dateToDefaultString(date: Date): string {
   return '' + date.getFullYear() + '-' + addZero(date.getMonth() + 1, 2) + '-' + addZero(date.getDate(), 2); // DateUtil.formatDate(date, 'YYYY-MM-DD');
 }

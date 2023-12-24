@@ -1,4 +1,4 @@
-import { Item } from '@lib/onecore';
+import { Item } from 'onecore';
 import * as React from 'react';
 import { PageSizeSelect, SearchComponentState, useSearch, value } from '@lib/react-hook-core';
 import ReactModal from 'react-modal';

@@ -1,4 +1,4 @@
-import { Item } from '@lib/onecore';
+import { Item } from 'onecore';
 
 export interface MasterDataService {
   getStatus(): Promise<Item[]>;

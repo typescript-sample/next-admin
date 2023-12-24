@@ -163,6 +163,11 @@
   height: auto;
 }
 
+.modal-portal-content.medium-width-height {
+  width: 60%;
+  height: auto;
+}
+
 .modal-portal-content.small-width-height section {
   display: flex;
   justify-content: center;

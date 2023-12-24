@@ -51,8 +51,8 @@ input[type=radio]:checked:before{
 .toast-message,
 .sidebar {
   background-color: #008577;
-  border-color: #00574b;
   color: #fff;
+  border-color: #00574b;
 }
 .sidebar > nav > ul > li > ul,
 .sidebar > nav > ul > li > ul > li > ul {
@@ -477,8 +477,8 @@ label.required:before,
   background-color: #d74738;
 }
 
-.warning-icon .alert-icon {
-  color: #cdba11;
+.success-icon .alert-icon {
+  color: #4db6ac;
 }
 
 .form-group .form-control:focus,
@@ -606,7 +606,11 @@ section > p > label,
 .btn-close,
 .btn-filter,
 .btn-remove-text,
-.btn-edit, .btn-transfer, .btn-divide {
+.btn-edit,
+.btn-transfer,
+.btn-divide,
+.view-container > form > footer > button.btn-secondary,
+.btn-secondary {
   color: #808080;
 }
 
@@ -674,11 +678,11 @@ section > p > label,
 }
 
 .border-bottom-highlight {
-  border-bottom: 3px solid #cdba11 !important;
+  border-bottom: 3px solid #4db6ac !important;
 }
 
 .highlight {
-  color: #cdba11 !important;
+  color: #4db6ac !important;
 }
 
 .view-container > form > div > label.search-input > *,
@@ -701,4 +705,46 @@ div.card,
 .video>section,
 ul.list-view.horizon>li.video {
   border-color: #ebebeb;
+}
+
+.sidebar .menu-item {
+  color: #fff;
+}
+
+.review-custom>.rate-area>.card {
+  background-color: #F5F5F5;
+}
+.btn-reply {
+  background-color: #F5F5F5;
+}
+.progress,
+.rateReview,
+.addPhoto {
+  background: #F5F5F5;
+}
+.comments-sort,
+#page-select-rate,
+.rating {
+  border-color: #777777;
+  color: #777777;
+}
+.btn-tab-area {
+  background-color: #F5F5F5;
+}
+.btn-tab-area .active {
+  background-color: white;
+}
+.btn-tab-area div:hover {
+  background-color: white;
+}
+.btn-tab-area div {
+  color: #0f0f0f;
+}
+.filter div button {
+  background-color: #0f0f0f;
+  color: #f0f0f0;
+}
+
+.sysMessage {
+  white-space: pre;
 }

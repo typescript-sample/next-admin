@@ -1,3 +1,8 @@
+.search-input > *:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .view-container > form > div > label.search-input,
 .view-container > div > label.search-input,
 .view-body > label.search-input,
@@ -262,10 +267,12 @@ i.sort-up:after {
   margin-left: 4px;
   content: '\25B2';
   font-size: 12px;
+  font-style: normal;
 }
 
 i.sort-down:after {
   margin-left: 4px;
   content: '\25BC';
   font-size: 12px;
+  font-style: normal;
 }
