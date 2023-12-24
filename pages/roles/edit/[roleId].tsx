@@ -166,7 +166,7 @@ function RoleForm() {
   };
   const assign = (e: React.MouseEvent<HTMLElement, MouseEvent>, id: string) => {
     e.preventDefault();
-    router.push(`/admin/roles/assign/${id}`);
+    router.push(`/roles/assign/${id}`);
     return;
   };
 

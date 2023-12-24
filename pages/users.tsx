@@ -38,8 +38,7 @@ const UsersForm = () => {
   component.editable = true;
   const edit = (e: OnClick, id: string) => {
     e.preventDefault();
-
-    router.push( path+`/edit/[cc]` ,path+`/edit/${id}`);
+    router.push( path+`/[cc]` ,path+`/${id}`);
   };
   console.log("component",component);
   

@@ -123,7 +123,6 @@ const param: EditComponentParam<Role, string, InternalState> = {
 export function RoleForm() {
   const router = useRouter();
   const refForm = React.useRef();
-  // const history = useHistory();
   const { state, setState, back, flag, updateState, save, resource } = useEdit<Role, string, InternalState>(refForm, initialState, getRoleService(), inputEdit(), param);
   React.useEffect(() => {
     showModel(state.role);
@@ -166,7 +165,7 @@ export function RoleForm() {
   };
   const assign = (e: React.MouseEvent<HTMLElement, MouseEvent>, id: string) => {
     e.preventDefault();
-    router.push(`/admin/roles/assign/${id}`);
+    router.push(`/roles/assign/${id}`);
     return;
   };
 
