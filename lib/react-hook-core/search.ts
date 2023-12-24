@@ -36,6 +36,7 @@ export interface Sortable {
 export interface Pagination {
   initPageSize?: number;
   pageSize?: number;
+  limit?: number;
   pageIndex?: number;
   total?: number;
   pages?: number;
@@ -171,13 +172,19 @@ export function changePage(com: Pagination, pageIndex: number, pageSize: number)
   com.append = false;
 }
 export function optimizeFilter<S extends Filter>(obj: S, searchable: Searchable, fields?: string[]): S {
+  const sLimit = searchable.limit;
   obj.fields = fields;
   if (searchable.pageIndex && searchable.pageIndex > 1) {
     obj.page = searchable.pageIndex;
   } else {
     delete obj.page;
   }
-  obj.limit = searchable.pageSize;
+  if (sLimit){
+    obj.limit = searchable.limit;
+  }else{
+    obj.limit = searchable.pageSize;
+  }
+
   if (searchable.appendMode && searchable.initPageSize !== searchable.pageSize) {
     obj.firstLimit = searchable.initPageSize;
   } else {
@@ -188,7 +195,28 @@ export function optimizeFilter<S extends Filter>(obj: S, searchable: Searchable,
   } else {
     delete obj.sort;
   }
+  if(searchable) {
+    mapObjects(obj, searchable as S);
+  }
   return obj;
+}
+
+function mapObjects(dest: any, src: any): void {
+  for (let key in dest) {
+    if (src.hasOwnProperty(key) && src[key] !== null && src[key] !== undefined) {
+      if(Array.isArray(dest[key]) && typeof src[key] === 'string' && src[key].length > 0) {
+          const arrayObjKeySrc = src[key].length > 0 ?  (src[key])?.split(',') : [];
+          if(arrayObjKeySrc && arrayObjKeySrc.length > 1) {
+            dest[key] = [...arrayObjKeySrc];
+          } else {
+            dest[key] = [];
+            dest[key].push(src[key])
+          }
+      } else {
+        dest[key] = src[key];
+      }
+    }
+  }
 }
 
 export function append<T>(list?: T[], results?: T[]): T[] {
@@ -551,22 +579,12 @@ export function toggleSortStyle(target: HTMLElement): string {
   }
   return field;
 }
-export function getModel<T, S extends Filter>(state: any, modelName: string, searchable: Searchable, fields?: string[], excluding?: string[]|number[], keys?: string[], l?: T[], f?: HTMLFormElement|null, dc?: (f2: HTMLFormElement, lc2?: Locale, cc?: string) => any, lc?: Locale, currencyCode?: string): S {
+export function getModel<S extends Filter>(state: any, modelName: string, searchable: Searchable, fields?: string[], excluding?: string[]|number[]): S {
   let obj2 = getModelFromState(state, modelName);
-  if (f && dc) {
-    obj2 = dc(f, lc, currencyCode);
-  }
+
   const obj: any = obj2 ? obj2 : {};
   const obj3 = optimizeFilter(obj, searchable, fields);
   obj3.excluding = excluding;
-  if (keys && keys.length === 1) {
-    if (l && l.length > 0) {
-      const refId = (l[l.length - 1] as any)[keys[0]];
-      if (refId) {
-        obj3.refId = '' + refId;
-      }
-    }
-  }
   return obj3;
 }
 function getModelFromState(state: any, modelName: string): any {

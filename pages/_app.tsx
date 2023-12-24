@@ -1,5 +1,4 @@
 import '../styles/globals.css'
-import '@lib/reactx-carousel/carousel.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import * as csv from 'csvtojson';
@@ -17,34 +16,7 @@ import { config } from '@service/config';
 import { ReactElement, ReactNode } from 'react'
 import { NextPage } from 'next'
 import LayoutPage from '@core/layout'
-function parseDate(value: string, format: string): Date | null | undefined {
-  if (!format || format.length === 0) {
-    format = 'MM/DD/YYYY';
-  } else {
-    format = format.toUpperCase();
-  }
-  const dateItems = format.split(/\.| |-/);
-  const valueItems = value.split(/\.| |-/);
-  let imonth = dateItems.indexOf('M');
-  let iday = dateItems.indexOf('D');
-  let iyear = dateItems.indexOf('YYYY');
-  if (imonth === -1) {
-    imonth = dateItems.indexOf('MM');
-  }
-  if (iday === -1) {
-    iday = dateItems.indexOf('DD');
-  }
-  if (iyear === -1) {
-    iyear = dateItems.indexOf('YY');
-  }
-  const month = parseInt(valueItems[imonth], 10) - 1;
-  let year = parseInt(valueItems[iyear], 10);
-  if (year < 100) {
-    year += 2000;
-  }
-  const day = parseInt(valueItems[iday], 10);
-  return new Date(year, month, day);
-}
+
 let isInit = false;
 export function init() {
   if (isInit) {
@@ -73,7 +45,6 @@ export function init() {
 
   const resource = storage.resource();
   vresources.phonecodes = phonecodes;
-  uiresources.date = parseDate;
   uiresources.currency = currency;
   uiresources.resource = resource;
 }
@@ -83,7 +54,6 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
-
 
 export default function App({ Component, pageProps, router }: AppPropsWithLayout) {
   init()

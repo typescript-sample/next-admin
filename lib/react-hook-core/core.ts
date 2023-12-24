@@ -1,6 +1,3 @@
-declare type Params<Key extends string = string> = {
-  readonly [key in Key]: string | undefined;
-};
 import { ParsedUrlQuery } from 'querystring';
 import { focusFirstElement } from './formutil';
 
@@ -291,32 +288,6 @@ export function buildKeys(attributes: Attributes): string[] {
 type Readonly<T> = {
   readonly [P in keyof T]: T[P];
 };
-
-interface Todo {
-  title: string;
-  description: string;
-  completed: boolean;
-  createdAt: number;
-}
- 
-type TodoPreview = Omit<Todo, "description">;
- 
-const todo: TodoPreview = {
-  title: "Clean room",
-  completed: false,
-  createdAt: 1615544252770,
-};
- 
-todo;
- 
- 
-type TodoInfo = Omit<Todo, "completed" | "createdAt">;
- 
-const todoInfo: TodoInfo = {
-  title: "Pick up kids",
-  description: "Kindergarten closes at 5pm",
-};
- 
 
 export function buildId<ID>(p: Readonly<ParsedUrlQuery>, keys?: string[]): ID | null {
   if (!keys || keys.length === 0 || keys.length === 1) {

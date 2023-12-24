@@ -9,7 +9,7 @@ import { getUserService, User, UserFilter } from '@service/index';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Pagination from '@lib/reactx-pagination';
-import style from '@lib/user.module.css'
+
 interface UserSearch extends SearchComponentState<User, UserFilter> {
   statusList: Item[];
 }

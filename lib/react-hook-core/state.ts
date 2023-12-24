@@ -82,7 +82,14 @@ export function buildState<S, K extends keyof S>(e: any, state: Readonly<S>, ctr
             value = [];
           }
           value.includes(ctrl.value) ? value = value.filter((v: string) => v !== ctrl.value) : value.push(ctrl.value);
+          // if (dType == 'array'){
+          //   if (value === 'string'){
+          //     value = [value]
+          //   }
+          // }
           model[field] = value;
+          // console.log(model,  modelName, model, model[field], field, value )
+          // setValue(model, field, value);
         } else {
           const v = valueOfCheckbox(ctrl);
           model[field] = v;
@@ -99,7 +106,29 @@ export function buildState<S, K extends keyof S>(e: any, state: Readonly<S>, ctr
         const objSet: any = {};
         objSet[modelName] = model;
         return objSet;
-      } else {
+      } else if (type && (type.toLowerCase() === 'date' || type.toLowerCase() === 'datetime-local')) {
+        const objSet: any = {};
+        try {
+          const selectedDate = new Date(ctrl.value);
+          setValue(model, field, ctrl.value && ctrl.value!== '' ? selectedDate.toISOString() : null);
+          objSet[modelName] = model;
+          return objSet;
+        } catch (error) {
+          console.error('Error occurred while formatting date:', error);
+        }
+        return objSet;
+    } else if (type && (type.toLowerCase() === 'time')) {
+      const objSet: any = {};
+      try {
+        const selectedDate = new Date(ctrl.value);
+        setValue(model, field, selectedDate.getTime());
+        objSet[modelName] = model;
+        return objSet;
+      } catch (error) {
+        console.error('Error occurred while formatting time:', error);
+      }
+      return objSet;
+    } else {
         if (ctrl.tagName === 'SELECT') {
           if (ctrl.value === '' || !ctrl.value) {
             ctrl.removeAttribute('data-value');

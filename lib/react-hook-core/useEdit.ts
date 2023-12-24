@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import {useEffect, useState} from 'react';
-import {Attributes, buildId, createEditStatus, EditStatusConfig, getModelName as getModelName2, hideLoading, initForm, LoadingService, Locale, message, messageByHttpStatus, ResourceService, showLoading, UIService} from './core';
+import {Attributes, buildId, createEditStatus, EditStatusConfig, ErrorMessage, getModelName as getModelName2, hideLoading, initForm, LoadingService, Locale, message, messageByHttpStatus, ResourceService, showLoading, UIService} from './core';
 import {build, createModel as createModel2, EditParameter, GenericService, handleStatus, handleVersion, initPropertyNullInModel, ResultInfo} from './edit';
 import {focusFirstError, readOnly as setReadOnly} from './formutil';
 import {DispatchWithCallback, useMergeState} from './merge';
@@ -34,7 +34,7 @@ export interface BaseEditComponentParam<T, ID> {
   validate?: (obj: T, callback: (obj2?: T) => void) => void;
   succeed?: (obj: T, msg: string, version?: string, isBack?: boolean, result?: ResultInfo<T>) => void;
   fail?: (result: ResultInfo<T>) => void;
-  postSave?: (obj: T, res: number|ResultInfo<T>, version?: string, backOnSave?: boolean) => void;
+  postSave?: (obj: T, res: number|T|ErrorMessage[], version?: string, backOnSave?: boolean) => void;
   handleDuplicateKey?: (result?: ResultInfo<T>) => void;
   load?: (i: ID|null, callback?: (m: T, showM: (m2: T) => void) => void) => void;
   doSave?: (obj: T, diff?: T, version?: string, isBack?: boolean) => void;
@@ -43,7 +43,7 @@ export interface BaseEditComponentParam<T, ID> {
 export interface HookBaseEditParameter<T, ID, S> extends BaseEditComponentParam<T, ID> {
   refForm: any;
   initialState: S;
-  service: GenericService<T, ID, number|ResultInfo<T>>;
+  service: GenericService<T, ID, number|T|ErrorMessage[]>;
   resource: ResourceService;
   showMessage: (msg: string) => void;
   showError: (m: string, header?: string, detail?: string, callback?: () => void) => void;
@@ -67,7 +67,7 @@ export interface HookPropsBaseEditParameter<T, ID, S, P> extends HookBaseEditPar
 export const useEdit = <T, ID, S>(
   refForm: any,
   initialState: S,
-  service: GenericService<T, ID, number|ResultInfo<T>>,
+  service: GenericService<T, ID, number|T|ErrorMessage[]>,
   p2: EditParameter,
   p?: EditComponentParam<T, ID, S>
   ) => {
@@ -110,7 +110,7 @@ export const useEditProps = <T, ID, S, P>(
   props: P,
   refForm: any,
   initialState: S,
-  service: GenericService<T, ID, number|ResultInfo<T>>,
+  service: GenericService<T, ID, number|T|ErrorMessage[]>,
   p2: EditParameter,
   p?: EditComponentParam<T, ID, S>
   ) => {
@@ -155,7 +155,7 @@ export const useEditOne = <T, ID, S>(p: HookBaseEditParameter<T, ID, S>) => {
 export const useCoreEdit = <T, ID, S, P>(
   refForm: any,
   initialState: S,
-  service: GenericService<T, ID, number|ResultInfo<T>>,
+  service: GenericService<T, ID, number|T|ErrorMessage[]>,
   p1: EditParameter,
   p?: BaseEditComponentParam<T, ID>,
   props?: P
@@ -363,7 +363,7 @@ export const useCoreEdit = <T, ID, S, P>(
   };
   const fail = (p && p.fail ? p.fail : _fail);
 
-  const _postSave = (obj: T, res: number | ResultInfo<T>, version?: string, backOnSave?: boolean) => {
+  const _postSave = (obj: T, res: number|T|ErrorMessage[], version?: string, backOnSave?: boolean) => {
     setRunning(false);
     hideLoading(p1.loading);
     const x: any = res;

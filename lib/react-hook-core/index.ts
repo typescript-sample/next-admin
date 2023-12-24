@@ -11,7 +11,6 @@ export * from './update';
 export * from './useSearch';
 export * from './useMessage';
 export * from './useEdit';
-export * from './components';
 export * from './search';
 export * from './reflect';
 export * from './com';
@@ -55,3 +54,42 @@ export const Loading = (props: LoadingProps) => {
   }
 };
 export type OnClick = React.MouseEvent<HTMLElement, MouseEvent>;
+export function formatDate(date: Date | null | undefined, format: string): string {
+  if (!date) {
+    return '';
+  }
+  const opts: any = {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      hour12: false,
+  };
+  const d2 = new Date(date).toLocaleString("en-US", opts);
+  let od = format.replace("YYYY", d2.slice(6, 10));
+  od = od.replace("MM", d2.slice(0, 2));
+  od = od.replace("DD", d2.slice(3, 5));
+  od = od.replace("HH", d2.slice(12, 14));
+  od = od.replace("mm", d2.slice(15, 17));
+  od = od.replace("ss", d2.slice(18, 20));
+  return od;
+};
+export function dateToString(date: Date | string): string {
+  const d2 = typeof date !== "string" ? date : new Date(date);
+  const year = d2.getFullYear();
+  const month = String(d2.getMonth() + 1).padStart(2, "0");
+  const day = String(d2.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+export function datetimeToString(date: Date | string = ""): string {
+  const d2 = typeof date !== "string" ? date : new Date(date);
+  const year = d2.getFullYear();
+  const month = String(d2.getMonth() + 1).padStart(2, "0");
+  const day = String(d2.getDate()).padStart(2, "0");
+  const hours = String(d2.getHours()).padStart(2, "0");
+  const minutes = String(d2.getMinutes()).padStart(2, "0");
+  const seconds = String(d2.getSeconds()).padStart(2, "0");
+  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+};

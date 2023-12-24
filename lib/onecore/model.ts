@@ -105,8 +105,7 @@ export interface Filter {
 export interface SearchResult<T> {
   list: T[];
   total?: number;
-  last?: boolean;
-  nextPageToken?: string;
+  next?: string;
 }
 
 export interface ErrorMessage {
@@ -115,20 +114,44 @@ export interface ErrorMessage {
   param?: string|number|Date;
   message?: string;
 }
+export interface ErrorHandler<T> {
+  handleError(rs: T, errors: ErrorMessage[], i?: number, filename?: string): void;
+}
+
 export interface ResultInfo<T> {
   status: number|string;
   errors?: ErrorMessage[];
   value?: T;
   message?: string;
 }
-export type Result<T> = number | ResultInfo<T>;
-
+export type Result<T> = number | T | ErrorMessage[];
 export interface DiffModel<T, ID> {
   id?: ID;
   origin?: T;
   value: T;
 }
-
+export interface User {
+  id: string;
+  name?: string;
+  email?: string;
+  phone?: string;
+  url?: string;
+}
+export interface History<T> {
+  id: string;
+  data: T;
+  time: Date;
+  user: User;
+  note?: string;
+}
+export interface Notification {
+  id: string;
+  time: Date;
+  notifier?: User;
+  message: string;
+  url?: string;
+  read: boolean;
+}
 export interface Achievement {
   subject: string;
   description: string;
@@ -158,3 +181,60 @@ export interface RoleFilter extends Filter {
 export type Validate<T> = (obj: T, patch?: boolean) => Promise<ErrorMessage[]>;
 export type Save<T> = (obj: T, ctx?: any) => Promise<number|ResultInfo<T>>;
 export type Load<T, ID> = ((id: ID, ctx?: any) => Promise<T|null>);
+
+export interface ReviewComment {
+  commentId: string;
+  id: string;
+  author: string;
+  userId: string;
+  comment: string;
+  time: Date;
+  updatedAt?: Date;
+  histories?: ShortComment[];
+  userURL?: string;
+  authorURL?: string;
+}
+export interface ShortComment {
+  comment: string;
+  time: Date;
+}
+
+export interface ReviewCommentFilter extends Filter {
+  commentId?: string;
+  id?: string;
+  author?: string;
+  userId?: string;
+  comment?: string;
+  time?: DateRange;
+  updatedAt?: DateRange;
+}
+export interface Info {
+  id: string;
+  rate: number;
+  rate1: number;
+  rate2: number;
+  rate3: number;
+  rate4: number;
+  rate5: number;
+  count: number;
+  score: number;
+}
+export interface Info10 {
+  id: string;
+  rate: number;
+  rate1: number;
+  rate2: number;
+  rate3: number;
+  rate4: number;
+  rate5: number;
+  rate6: number;
+  rate7: number;
+  rate8: number;
+  rate9: number;
+  rate10: number;
+  count: number;
+  score: number;
+}
+export interface InfoRepository<ID> {
+  exist(id: ID, ctx?: any): Promise<boolean>;
+}

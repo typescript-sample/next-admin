@@ -3,6 +3,9 @@ export interface Statement {
   query: string;
   params?: any[];
 }
+export interface QueryBuilder {
+  build(cxt?: any): Promise<Statement>;
+}
 export interface SimpleDB {
   driver: string;
   query<T>(sql: string): Promise<T[]>;

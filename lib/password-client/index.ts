@@ -364,7 +364,7 @@ export function changePassword (
       const msg = r.success_send_passcode_change_password;
       showMessage(msg);
       user.step = 1;
-    } else if (res < 0) {
+    } else if (typeof res === 'number' && res < 0) {
       const msg = r.password_duplicate;
       showError(msg);
     } else if (res === true || res === 1) {

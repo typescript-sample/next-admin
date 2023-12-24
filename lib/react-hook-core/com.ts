@@ -12,7 +12,7 @@ export function PageSizeSelect(p: PageSizeProps) {
   const g = p.sizes;
   const s = (!g || g.length === 0 ? pageSizes : g);
   const opts = s.map(pgSize => React.createElement('option', { key: pgSize, value: pgSize }, pgSize));
-  return React.createElement('select', { id: p.id, name: p.name, defaultValue: p.size, onChange: p.onChange }, opts);
+  return React.createElement('select', { id: p.id, name: p.name, value: p.size, defaultValue: p.size, onChange: p.onChange }, opts);
 }
 export interface Props {
   id?: string;

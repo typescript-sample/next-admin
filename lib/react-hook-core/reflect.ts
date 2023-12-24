@@ -73,7 +73,14 @@ const setKey = (_object: any, _isArrayKey: boolean, _key: string, _nextValue: an
   }
   return _object;
 };
-
+export function isEmptyObject(obj: any): boolean {
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      return false;
+    }
+  }
+  return true;
+};
 export function diff(obj1: any, obj2: any): string[] {
   const fields = [];
   const key1s = Object.keys(obj1);
@@ -159,7 +166,7 @@ export function equal(obj1: any, obj2: any): boolean {
     return (obj1.getTime() === obj2.getTime());
   }
   if ((Array.isArray(obj1) && !Array.isArray(obj2))
-      || (!Array.isArray(obj1) && Array.isArray(obj2))) {
+    || (!Array.isArray(obj1) && Array.isArray(obj2))) {
     return false;
   }
   if (!Array.isArray(obj1) && !Array.isArray(obj2)) {
@@ -205,7 +212,7 @@ export function equalArrays<T>(ar1: T[], ar2: T[]): boolean {
   return true;
 }
 
-export function getArray<T>(list: T[]|undefined|null, name: string, v: boolean|string|number): T[] {
+export function getArray<T>(list: T[] | undefined | null, name: string, v: boolean | string | number): T[] {
   const arrs = [];
   if (list) {
     for (const obj of list) {
@@ -216,7 +223,7 @@ export function getArray<T>(list: T[]|undefined|null, name: string, v: boolean|s
   }
   return arrs;
 }
-export function getDiffArray<T>(list: T[]|undefined|null, name: string, v: boolean|string|number): T[] {
+export function getDiffArray<T>(list: T[] | undefined | null, name: string, v: boolean | string | number): T[] {
   const arrs = [];
   if (list) {
     for (const obj of list) {
@@ -227,14 +234,14 @@ export function getDiffArray<T>(list: T[]|undefined|null, name: string, v: boole
   }
   return arrs;
 }
-export function setAll<T>(list: T[]|undefined|null, name: string, v: boolean|string|number): void {
+export function setAll<T>(list: T[] | undefined | null, name: string, v: boolean | string | number): void {
   if (list) {
     for (const obj of list) {
       (obj as any)[name] = v;
     }
   }
 }
-export function equalAll<T>(list: T[]|undefined|null, name: string, v: boolean|string|number): boolean {
+export function equalAll<T>(list: T[] | undefined | null, name: string, v: boolean | string | number): boolean {
   if (list) {
     for (const obj of list) {
       if ((obj as any)[name] !== v) {
