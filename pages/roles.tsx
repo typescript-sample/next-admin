@@ -30,7 +30,7 @@ const roleSearch: RoleSearch = {
 
   const edit = (e: OnClick, id: string) => {
     e.preventDefault();
-    router.push(router.pathname+ `/edit/${id}`);
+    router.push(router.pathname+ `/${id}`);
   };
   const filter = value(state.filter);
   return (
@@ -40,7 +40,7 @@ const roleSearch: RoleSearch = {
         <div className='btn-group'>
           {component.view !== 'table' && <button type='button' id='btnTable' name='btnTable' className='btn-table' data-view='table' onClick={changeView} />}
           {component.view === 'table' && <button type='button' id='btnListView' name='btnListView' className='btn-list-view' data-view='listview' onClick={changeView} />}
-          {component.addable && <Link id='btnNew' className='btn-new' href='add'/>}
+          {component.addable && <Link id='btnNew' className='btn-new' href='new'/>}
         </div>
       </header>
       <div>

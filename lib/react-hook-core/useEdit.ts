@@ -216,7 +216,10 @@ export const useCoreEdit = <T, ID, S, P>(
     if (form) {
       setReadOnly(form);
     }
-    p1.showError(msg.message, msg.title, undefined, () => window.history.back);
+    p1.showError(msg.message, msg.title, undefined, () => {
+      debugger;
+      window.history.back;
+    });
   };
   const handleNotFound = (p && p.handleNotFound ? p.handleNotFound : _handleNotFound);
 
@@ -449,9 +452,11 @@ export const useCoreEdit = <T, ID, S, P>(
 
   const _load = (_id: ID|null, callback?: (m: T, showM: (m2: T) => void) => void) => {
     const id: any = _id;
-    if (id != null && id !== '') {
+    console.log('id ' + id)
+    if (id && id !== '' && id !== 'new') {
       setRunning(true);
       showLoading(p1.loading);
+      debugger
       service.load(id).then(obj => {
         if (!obj) {
           handleNotFound(refForm.current);

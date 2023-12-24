@@ -5,7 +5,7 @@ import { confirm, handleError, showMessage, storage, useResource } from '@lib/ui
 import femaleIcon from '@assets/images/female.png';
 import maleIcon from '@assets/images/male.png';
 import { getUserService, User ,getRoleService, Role} from '@service/index';
-import { UsersLookup } from '@component/admin/users-lookup';
+import { UsersLookup } from '@component/users-lookup';
 import { useRouter } from 'next/router';
 
 interface InternalState {

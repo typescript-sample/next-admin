@@ -51,7 +51,7 @@ const UsersForm = () => {
         <div className='btn-group'>
           {component.view !== 'table' && <button type='button' id='btnTable' name='btnTable' className='btn-table' data-view='table' onClick={changeView} />}
           {component.view === 'table' && <button type='button' id='btnListView' name='btnListView' className='btn-list-view' data-view='listview' onClick={changeView} />}
-          {component.addable && <Link id='btnNew' className='btn-new' href={path+'/add'} />}
+          {component.addable && <Link id='btnNew' className='btn-new' href={path+'/new'} />}
         </div>
       </header>
       <div>
