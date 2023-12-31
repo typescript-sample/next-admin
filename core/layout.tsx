@@ -3,7 +3,7 @@ import { HttpRequest } from 'axios-core';
 import { useEffect, useState } from 'react';
 import * as React from 'react';
 import { useMergeState } from '@lib/react-hook-core';
-import { collapseAll, expandAll, Nav, sub } from '@lib/reactx-nav';
+import { collapseAll, expandAll, Nav, sub } from 'reactx-navigator';
 import { hasClass, options, parentHasClass, Privilege, storage, StringMap, UserAccount } from '@lib/uione';
 import logo from '@assets/images/logo.png';
 import Link from 'next/link';
