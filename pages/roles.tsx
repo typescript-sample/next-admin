@@ -6,7 +6,7 @@ import { inputSearch } from '@lib/uione';
 import { getRoleService, Role, RoleFilter } from '@service/index';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import Pagination from '@lib/reactx-pagination';
+import Pagination from 'reactx-paging';
 
 interface RoleSearch extends SearchComponentState<Role, RoleFilter> {
   statusList: Item[];

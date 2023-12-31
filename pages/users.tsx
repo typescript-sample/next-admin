@@ -8,7 +8,7 @@ import maleIcon from '@assets/images/male.png';
 import { getUserService, User, UserFilter } from '@service/index';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import Pagination from '@lib/reactx-pagination';
+import Pagination from 'reactx-paging';
 
 interface UserSearch extends SearchComponentState<User, UserFilter> {
   statusList: Item[];
@@ -31,7 +31,6 @@ const UsersForm = () => {
   const path = useMemo(() => {
     return router.pathname
   }, [])
-  console.log(router.pathname)
   const refForm = React.useRef();
   const { state, resource, component, updateState, search, sort, toggleFilter, clearQ, changeView, pageChanged, pageSizeChanged } = useSearch<User, UserFilter, UserSearch>(refForm, initialState, getUserService(), inputSearch());
   component.viewable = true;
@@ -40,7 +39,6 @@ const UsersForm = () => {
     e.preventDefault();
     router.push( path+`/[cc]` ,path+`/${id}`);
   };
-  console.log("component",component);
   
   const { list } = state;
   const filter = value(state.filter);

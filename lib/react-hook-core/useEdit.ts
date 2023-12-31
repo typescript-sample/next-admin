@@ -452,7 +452,6 @@ export const useCoreEdit = <T, ID, S, P>(
 
   const _load = (_id: ID|null, callback?: (m: T, showM: (m2: T) => void) => void) => {
     const id: any = _id;
-    console.log('id ' + id)
     if (id && id !== '' && id !== 'new') {
       setRunning(true);
       showLoading(p1.loading);

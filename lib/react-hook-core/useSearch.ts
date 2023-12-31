@@ -445,13 +445,13 @@ export const useCoreSearch = <T, S extends Filter, ST>(
     }
     const am = component.appendMode;
     const pi = (s.page && s.page >= 1 ? s.page : 1);
-    setComponent({ total: sr.total, pageIndex: pi, nextPageToken: sr.nextPageToken });
+    setComponent({ total: sr.total, pageIndex: pi, nextPageToken: sr.next });
     if (am) {
       let limit = s.limit;
       if ((!s.page || s.page <= 1) && s.firstLimit && s.firstLimit > 0) {
         limit = s.firstLimit;
       }
-      handleAppend(component, sr.list, limit, sr.nextPageToken);
+      handleAppend(component, sr.list, limit, sr.next);
       if (component.append && (s.page && s.page > 1)) {
         appendList(results, component.list, setState as any);
       } else {
