@@ -2,7 +2,7 @@ import { Item } from 'onecore';
 import * as React from 'react';
 import { checked, OnClick,  PageSizeSelect, SearchComponentState, useSearch, value } from 'next-hook-core';
 // import { Pagination } from '@lib/reactx-pagination';
-import { inputSearch } from '@lib/uione';
+import { inputSearch } from 'uione';
 import { getRoleService, Role, RoleFilter } from '@service/index';
 import { useRouter } from 'next/router';
 import Link from 'next/link';

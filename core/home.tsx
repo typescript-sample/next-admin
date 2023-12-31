@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { buildShownItems, Groups, Item } from 'reactx-groups';
-import { StringMap, usePrivileges, useResource } from '@lib/uione';
+import { StringMap, usePrivileges, useResource } from 'uione';
 import { useRouter } from 'next/router';
 
 export default function HomePage() {

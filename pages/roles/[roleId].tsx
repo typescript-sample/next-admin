@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createModel, DispatchWithCallback, EditComponentParam, useEdit } from 'next-hook-core';
-import { handleError, inputEdit, Status } from '@lib/uione';
+import { handleError, inputEdit, Status } from 'uione';
 import { getRoleService, Privilege, Role } from '@service/index';
 import { useRouter } from 'next/router';
 

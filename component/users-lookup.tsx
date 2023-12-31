@@ -3,7 +3,7 @@ import * as React from 'react';
 import { PageSizeSelect, SearchComponentState, useSearch, value } from 'next-hook-core';
 import ReactModal from 'react-modal';
 import Pagination from 'reactx-paging';
-import { inputSearch } from '@lib/uione';
+import { inputSearch } from 'uione';
 import { getUserService, User, UserFilter } from '@service/index';
 
 // ReactModal.setAppElement('#root');

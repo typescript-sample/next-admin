@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import * as React from 'react';
 import { useMergeState } from 'next-hook-core';
 import { collapseAll, expandAll, Nav, sub } from 'reactx-navigator';
-import { hasClass, options, parentHasClass, Privilege, storage, StringMap, UserAccount } from '@lib/uione';
+import { hasClass, options, parentHasClass, Privilege, storage, StringMap, UserAccount } from 'uione';
 import logo from '@assets/images/logo.png';
 import Link from 'next/link';
 import { useRouter } from 'next/router';

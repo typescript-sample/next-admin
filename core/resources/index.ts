@@ -1,4 +1,4 @@
-import {Resources, StringMap} from '@lib/uione';
+import {Resources, StringMap} from 'uione';
 import {en as adminEN} from './admin/en';
 import {vi as adminVI} from './admin/vi';
 import {en as authenticationEN} from './authentication/en';

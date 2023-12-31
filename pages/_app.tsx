@@ -8,7 +8,7 @@ import { alert, confirm } from 'ui-alert';
 import { loading } from 'ui-loading';
 import { resources as uiresources, UIService } from 'ui-plus';
 import { toast } from 'ui-toast';
-import { storage } from '@lib/uione';
+import { storage } from 'uione';
 import { resources as vresources } from 'validation-core';
 import { DefaultCsvService, resources } from 'web-clients';
 import { resources as locales } from '@core/resources'
@@ -28,6 +28,7 @@ export function init() {
   resources.config = {
     list: 'list'
   };
+  storage.navigator = global.navigator;
   if (storage.home == null || storage.home === undefined) {
     storage.home = '/home';
   }

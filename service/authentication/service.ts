@@ -3,7 +3,7 @@ import axios from 'axios';
 import { HttpRequest } from 'axios-core';
 import { PasswordClient, PasswordService } from 'password-client';
 import { Signup, SignupClient, SignupService} from 'signup-client';
-import { storage } from '@lib/uione';
+import { storage } from 'uione';
 // axios.defaults.withCredentials = true;
 
 export interface Config {

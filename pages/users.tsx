@@ -2,7 +2,7 @@ import { Item } from 'onecore';
 import React, { useMemo } from 'react';
 import { checked, OnClick, Search, SearchComponentState, useSearch, value } from 'next-hook-core';
 // import { Pagination } from '@lib/reactx-pagination';
-import { inputSearch } from '@lib/uione';
+import { inputSearch } from 'uione';
 import femaleIcon from '@assets/images/female.png';
 import maleIcon from '@assets/images/male.png';
 import { getUserService, User, UserFilter } from '@service/index';

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { HttpRequest } from 'axios-core';
-import { options, storage } from '@lib/uione';
+import { options, storage } from 'uione';
 import { MasterDataClient, MasterDataService } from './master-data';
 import { RoleClient, RoleService } from './role';
 import { UserClient, UserService } from './user';

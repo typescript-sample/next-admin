@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { initForm, OnClick, useMessage, useUpdate } from 'next-hook-core';
 import { alertInfo } from 'ui-alert';
-import { getResource, handleError, loading, message, registerEvents, setPrivileges, setUser, storage, useResource } from '@lib/uione';
+import { getResource, handleError, loading, message, registerEvents, setPrivileges, setUser, storage, useResource } from 'uione';
 import logo from '@assets/images/logo.png';
 import { getAuthen } from '../../service/authentication/service';
 
