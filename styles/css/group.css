@@ -1,6 +1,9 @@
 .view-container.menu {
   height: calc(100vh - 44px);
 }
+.view-container.menu section.row {
+  height: unset;
+}
 .row.group {
   overflow-y: auto;
   max-height: calc(100vh - 44px - 44px);
