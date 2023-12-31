@@ -30,6 +30,13 @@ export const vi = {
 
   role_assigned_users: 'Assigned Users',
   role_roles_assign_to_groups: 'Role Assign To Group(s)',
+
+  // Audit log
+  audit_logs: 'Audit logs',
+  audit_log_time: 'Date time',
+  audit_log_resource_type : 'Resource type',
+  audit_log_action : 'Action',
+  audit_log_created_by : 'Performed by',
 };
 
 export default vi;
