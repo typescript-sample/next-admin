@@ -1,5 +1,6 @@
 @import './css/reset.css';
 @import './App.css';
+@import url('http://fonts.cdnfonts.com/css/roboto');
 @import '../assets/fonts/material-icon/css/material-icons.css';
 @import './css/checkbox.css';
 @import './css/radio.css';
@@ -23,10 +24,7 @@
 @import './css/group.css';
 @import './css/navigation.css';
 @import './css/pagination.css';
-@import url('http://fonts.cdnfonts.com/css/roboto');
-@import "./css/date-picker.css";
 @import "./css/diff.css";
-@import "./css/profile.css";
 html,
 body {
   margin: 0;
