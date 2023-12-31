@@ -39,7 +39,7 @@
     "ui-loading": "^0.0.5",
     "ui-plus": "^0.1.8",
     "ui-toast": "^0.0.5",
-    "uione": "^0.1.3",
+    "uione": "^0.1.4",
     "validation-core": "^1.0.0",
     "web-clients": "^0.2.3"
   },
