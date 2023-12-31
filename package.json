@@ -31,7 +31,6 @@
     "react-modal": "^3.16.1",
     "reactx-groups": "^0.0.1",
     "reactx-navigator": "^0.0.1",
-    "reactx-pagination": "^0.0.2",
     "reactx-paging": "^0.0.1",
     "sass": "^1.69.6",
     "signup-client": "^0.1.3",
