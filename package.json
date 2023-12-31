@@ -20,6 +20,7 @@
     "js-base64": "^3.7.5",
     "locale-service": "^0.0.7",
     "next": "13.0.1",
+    "next-hook-core": "^0.1.0",
     "onecore": "^0.1.1",
     "password-client": "^0.1.2",
     "phonecodes": "^0.0.2",

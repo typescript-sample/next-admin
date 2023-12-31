@@ -1,8 +1,8 @@
 import { Item } from 'onecore';
 import * as React from 'react';
-import { PageSizeSelect, SearchComponentState, useSearch, value } from '@lib/react-hook-core';
+import { PageSizeSelect, SearchComponentState, useSearch, value } from 'next-hook-core';
 import ReactModal from 'react-modal';
-import Pagination from '@lib/reactx-pagination';
+import Pagination from 'reactx-paging';
 import { inputSearch } from '@lib/uione';
 import { getUserService, User, UserFilter } from '@service/index';
 

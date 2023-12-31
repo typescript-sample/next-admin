@@ -1,4 +1,4 @@
-
+@import './css/reset.css';
 @import './App.css';
 @import '../assets/fonts/material-icon/css/material-icons.css';
 @import './css/checkbox.css';
@@ -23,7 +23,6 @@
 @import './css/group.css';
 @import './css/navigation.css';
 @import './css/pagination.css';
-@import './css/reset.css';
 @import url('http://fonts.cdnfonts.com/css/roboto');
 @import "./css/date-picker.css";
 @import "./css/diff.css";

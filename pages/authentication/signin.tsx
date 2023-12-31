@@ -4,7 +4,7 @@ import { Base64 } from 'js-base64';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { initForm, OnClick, useMessage, useUpdate } from '@lib/react-hook-core';
+import { initForm, OnClick, useMessage, useUpdate } from 'next-hook-core';
 import { alertInfo } from 'ui-alert';
 import { getResource, handleError, loading, message, registerEvents, setPrivileges, setUser, storage, useResource } from '@lib/uione';
 import logo from '@assets/images/logo.png';

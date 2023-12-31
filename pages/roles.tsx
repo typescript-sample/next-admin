@@ -1,6 +1,6 @@
 import { Item } from 'onecore';
 import * as React from 'react';
-import { checked, OnClick,  PageSizeSelect, SearchComponentState, useSearch, value } from '@lib/react-hook-core';
+import { checked, OnClick,  PageSizeSelect, SearchComponentState, useSearch, value } from 'next-hook-core';
 // import { Pagination } from '@lib/reactx-pagination';
 import { inputSearch } from '@lib/uione';
 import { getRoleService, Role, RoleFilter } from '@service/index';

@@ -1,6 +1,6 @@
 import { Item } from 'onecore';
 import * as React from 'react';
-import { createModel, DispatchWithCallback, EditComponentParam, useEdit } from '@lib/react-hook-core';
+import { createModel, DispatchWithCallback, EditComponentParam, useEdit } from 'next-hook-core';
 import { formatPhone } from 'ui-plus';
 import { emailOnBlur, Gender, handleError, handleSelect, inputEdit, phoneOnBlur, requiredOnBlur, Status } from '@lib/uione';
 import { getMasterData, getUserService, User } from '@service/index';

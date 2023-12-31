@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as React from 'react';
-import { buildId, DispatchWithCallback, error, message } from '@lib/react-hook-core';
+import { buildId, DispatchWithCallback, error, message } from 'next-hook-core';
 import { confirm, handleError, showMessage, storage, useResource } from '@lib/uione';
 import femaleIcon from '@assets/images/female.png';
 import maleIcon from '@assets/images/male.png';
